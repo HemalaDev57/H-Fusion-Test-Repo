@@ -7,13 +7,13 @@ pipeline {
                 stage('Compile') {
                     steps {
                         echo 'Compiling...'
-                        sleep 5
+                        sleep 3
                     }
                 }
                 stage('Package') {
                     steps {
                         echo 'Packaging...'
-                        sleep 5
+                        sleep 3
                     }
                 }
             }
@@ -41,7 +41,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running Unit Tests...'
-                sleep 5
+                sleep 2
             }
         }
 
@@ -55,7 +55,7 @@ pipeline {
                     label: "prod"
                 )    
                 echo 'Deploying...'
-                sleep 5
+                sleep 2
             }
         }
     }
