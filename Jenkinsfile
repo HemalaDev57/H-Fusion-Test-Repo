@@ -33,7 +33,7 @@ pipeline {
                         label: "prod"
                     )
                     echo "Artifact output is: ${artifactOutput}"
-                    echo "Artifact ID is: ${artifactOutput.artifactId}"
+                    env.ARTIFACT_ID = artifactOutput
                 }
             }
         }
@@ -47,6 +47,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
+                echo ${env.ARTIFACT_ID}
                 echo 'Deploying...'
                 sleep 5
             }
