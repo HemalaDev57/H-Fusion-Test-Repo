@@ -28,8 +28,8 @@ pipeline {
                         name: "test-artifact",
                         version: "1.0.0",
                         type: "docker",
-                        url: "http://localhost:1111",
-                        digest: "6f637064707039346163663237383938",
+                        url: "docker.io/hemaladev57/test-artifact:1.0.0",
+                        digest: "6123f637064707039346163663237383938",
                         label: "prod"
                     )
                     echo "Artifact output is: ${artifactOutput}"
