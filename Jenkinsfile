@@ -48,6 +48,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Artifact ID : ${env.ARTIFACT_ID}"
+                registerDeployedArtifactMetadata(
+                    artifact_id: "${env.ARTIFACT_ID}",
+                    artifact_url: "http://localhost:1111"
+                    target_environment: "Production",
+                    label: "prod"
+                )    
                 echo 'Deploying...'
                 sleep 5
             }
