@@ -47,7 +47,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo ${env.ARTIFACT_ID}
+                echo "Artifact ID : ${env.ARTIFACT_ID}"
                 echo 'Deploying...'
                 sleep 5
             }
