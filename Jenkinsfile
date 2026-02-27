@@ -25,11 +25,11 @@ pipeline {
                     echo 'Registering the metadata'
                     echo 'Another echo to make the pipeline a bit more complex'
                     def artifactOutput = registerBuildArtifactMetadata(
-                        name: "test-artifact",
+                        name: "h-artifact",
                         version: "1.0.0",
                         type: "docker",
-                        url: "docker.io/hemaladev57/test-artifact:1.0.0",
-                        digest: "6123f637064707039346163663237383938",
+                        url: "docker.io/hemaladev57/h-artifact:1.0.0",
+                        digest: "6123f6370647070393461636632373839387",
                         label: "prod"
                     )
                     echo "Artifact output is: ${artifactOutput}"
@@ -51,8 +51,47 @@ pipeline {
                 registerDeployedArtifactMetadata(
                     id: "${env.ARTIFACT_ID}",
                     url: "http://localhost:1111",
-                    targetEnvironment: "Production",
-                    label: "prod"
+                    targetEnvironment: "prod",
+                    labels: "prod"
+                )    
+                echo 'Deploying...'
+                sleep 2
+            }
+        }
+        stage('Registering build artifact - 1') {
+            steps {
+                script {
+                    echo 'Registering the metadata'
+                    echo 'Another echo to make the pipeline a bit more complex'
+                    def artifactOutput1 = registerBuildArtifactMetadata(
+                        name: "h-artifact-1",
+                        version: "1.0.1",
+                        type: "docker",
+                        url: "docker.io/hemaladev57/h-artifact-1:1.0.0",
+                        digest: "5123f6370647070393461636632373839385",
+                        label: "prod"
+                    )
+                    echo "Artifact output is: ${artifactOutput1}"
+                    env.ARTIFACT_ID = artifactOutput1
+                }
+            }
+        }
+
+        stage('Test - 1') {
+            steps {
+                echo 'Running Unit Tests...'
+                sleep 2
+            }
+        }
+
+        stage('Deploy-1') {
+            steps {
+                echo "Artifact ID : ${env.ARTIFACT_ID}"
+                registerDeployedArtifactMetadata(
+                    id: "${env.ARTIFACT_ID}",
+                    url: "http://localhost:1111",
+                    targetEnvironment: "prod",
+                    labels: "prod"
                 )    
                 echo 'Deploying...'
                 sleep 2
