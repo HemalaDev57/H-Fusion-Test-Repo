@@ -14,6 +14,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         id: checkout
+      - name: compile and build
+        run: | 
+          echo "Compiling"
+          sleep 5
       # Register Deployed artifact using artifact id
       - name: register-build-artifact
         id: register_artifact
