@@ -1,0 +1,30 @@
+name: Testing the deployed artifact action
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      [master]
+jobs:
+  action-test-job:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        id: checkout
+      # Register Deployed artifact using artifact id
+      - name: register-build-artifact
+        id: register_artifact
+        uses: cloudbees-io-gha/register-build-artifact@v3
+        with:
+          name: h-deployed-artifact-test
+          url: "docker.io/hdevanan/h-test-artifact:1.0.0"
+          version: 1.0.0
+          label: staging,qa,prod
+          type: "docker"
+          digest: "sha256:1234567890abcdef123456123456abcdefabcdef123456"
+      - name: Print artifact id
+        run: |
+          echo '${{ steps.register_artifact.outputs.cbp_artifact_id }}'
