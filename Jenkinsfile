@@ -51,7 +51,7 @@ pipeline {
                 registerDeployedArtifactMetadata(
                     id: "${env.ARTIFACT_ID}",
                     url: "http://localhost:1111",
-                    targetEnvironment: "prod",
+                    targetEnvironment: "Production",
                     labels: "prod"
                 )    
                 echo 'Deploying...'
@@ -90,7 +90,7 @@ pipeline {
                 registerDeployedArtifactMetadata(
                     id: "${env.ARTIFACT_ID}",
                     url: "http://localhost:1111",
-                    targetEnvironment: "prod",
+                    targetEnvironment: "Production",
                     labels: "prod"
                 )    
                 echo 'Deploying...'
