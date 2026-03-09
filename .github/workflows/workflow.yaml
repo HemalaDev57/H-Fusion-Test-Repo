@@ -32,3 +32,12 @@ jobs:
       - name: Print artifact id
         run: |
           echo '${{ steps.register_artifact.outputs.cbp_artifact_id }}'
+      - name: Test
+        run: |
+          echo 'sucecss'
+          exit 1
+          sleep 5
+      - name: Print artifact id
+        run: |
+          echo 'success'
+          sleep 5
