@@ -31,14 +31,14 @@ pipeline {
                     digest: "6f637064707039346163663237383938",
                     label: "prod"
                 )
-                sleep 10
+                sleep 20
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running Unit Tests...'
-                sleep 10
+                sleep 20
                 error('Tests failed!')
             }
         }
@@ -46,7 +46,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                sleep 10
+                sleep 20
             }
         }
     }
