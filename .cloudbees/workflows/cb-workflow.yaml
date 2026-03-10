@@ -7,7 +7,7 @@ on:
       - "**"
   workflow_dispatch:
 jobs:
-  build:
+  workflow:
     steps:
       - name: Say hello
         uses: docker://golang:1.20.3-alpine3.17
@@ -33,4 +33,22 @@ jobs:
         shell: sh
         run: |
           echo "hello world testing"
+          sleep 5
+      - name: Deploy
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world deploying"
+          sleep 5
+      - name: Automated Test
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world auto testing"
+          sleep 5
+      - name: Release
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "hello world release"
           sleep 5
