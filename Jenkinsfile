@@ -26,7 +26,7 @@ pipeline {
                     echo 'Another echo to make the pipeline a bit more complex'
                     def artifactOutput = registerBuildArtifactMetadata(
                         name: "h-artifact-prod",
-                        version: "1.0.0",
+                        version: "1.0.1",
                         type: "docker",
                         url: "docker.io/hemaladev57/h-artifact-prod:1.0.0",
                         digest: "6123f6370647070393461636632373815387",
@@ -65,7 +65,7 @@ pipeline {
                     echo 'Another echo to make the pipeline a bit more complex'
                     def artifactOutput1 = registerBuildArtifactMetadata(
                         name: "h-artifact-prod-1",
-                        version: "1.0.1",
+                        version: "1.0.2",
                         type: "docker",
                         url: "docker.io/hemaladev57/h-artifact-prod-1:1.0.0",
                         digest: "5123f6370647070393461516632373839385",
