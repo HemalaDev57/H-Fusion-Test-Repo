@@ -47,13 +47,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Artifact ID : ${env.ARTIFACT_ID}"
-                registerDeployedArtifactMetadata(
-                    id: "${env.ARTIFACT_ID}",
-                    url: "http://localhost:1111",
-                    targetEnvironment: "Production",
-                    labels: "prod"
-                )    
+                echo "Artifact ID : ${env.ARTIFACT_ID}"   
                 echo 'Deploying...'
                 sleep 2
             }
@@ -87,12 +81,6 @@ pipeline {
         stage('Deploy-1') {
             steps {
                 echo "Artifact ID : ${env.ARTIFACT_ID}"
-                registerDeployedArtifactMetadata(
-                    id: "${env.ARTIFACT_ID}",
-                    url: "http://localhost:1111",
-                    targetEnvironment: "Production",
-                    labels: "prod"
-                )    
                 echo 'Deploying...'
                 sleep 2
             }
